@@ -1,0 +1,24 @@
+<?php
+namespace App\Http\Controllers;
+use App\Models\Tool;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+class ToolController extends Controller {
+    public function index(){ return Tool::with(['category','user'])->get(); }
+    public function store(Request $request){
+        $validated=$request->validate(['name'=>'required','link'=>'required|url','category_id'=>'required']);
+        $tool=Tool::create(array_merge($validated,['created_by'=>Auth::id(),'status'=>'pending']));
+        return response()->json($tool,201);
+    }
+    public function update(Request $request,$id){
+        $tool=Tool::findOrFail($id);
+        $tool->update($request->all());
+        return response()->json($tool);
+    }
+    public function destroy($id){
+        $tool=Tool::findOrFail($id);
+        $tool->delete();
+        return response()->json(['message'=>'deleted']);
+    }
+}

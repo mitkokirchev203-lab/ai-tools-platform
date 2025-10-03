@@ -1,0 +1,15 @@
+<?php
+namespace Database\Seeders;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+
+class CategorySeeder extends Seeder {
+    public function run(): void {
+        DB::table('categories')->insert([
+            ['name'=>'Chatbots','slug'=>'chatbot'],
+            ['name'=>'NLP','slug'=>'nlp'],
+            ['name'=>'Computer Vision','slug'=>'vision']
+        ]);
+    }
+}
+

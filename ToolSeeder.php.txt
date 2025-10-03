@@ -1,0 +1,12 @@
+<?php
+namespace Database\Seeders;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+
+class ToolSeeder extends Seeder {
+    public function run(): void {
+        DB::table('tools')->insert([
+            ['name'=>'ChatGPT','description'=>'AI Chatbot','link'=>'https://chat.openai.com','category_id'=>1,'created_by'=>1,'status'=>'approved']
+        ]);
+    }
+}

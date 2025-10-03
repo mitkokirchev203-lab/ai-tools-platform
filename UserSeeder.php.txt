@@ -1,0 +1,15 @@
+<?php
+namespace Database\Seeders;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+
+class UserSeeder extends Seeder {
+    public function run(): void {
+        DB::table('users')->insert([
+            ['name'=>'Иван Иванов','email'=>'ivan@admin.local','password'=>Hash::make('password'),'role_id'=>1],
+            ['name'=>'Елена Петрова','email'=>'elena@frontend.local','password'=>Hash::make('password'),'role_id'=>3],
+            ['name'=>'Петър Георгиев','email'=>'petar@backend.local','password'=>Hash::make('password'),'role_id'=>2],
+        ]);
+    }
+}
